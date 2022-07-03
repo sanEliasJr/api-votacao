@@ -2,9 +2,12 @@ package com.solutis.votacao.domain.associado.service;
 
 import com.solutis.votacao.domain.associado.entity.Associado;
 import com.solutis.votacao.domain.associado.repository.AssociadoRepository;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
+@AllArgsConstructor
 public class AssociadoService {
 
     private AssociadoRepository associadoRepository;

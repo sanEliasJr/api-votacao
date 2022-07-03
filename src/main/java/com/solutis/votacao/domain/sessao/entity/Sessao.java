@@ -1,10 +1,9 @@
 package com.solutis.votacao.domain.sessao.entity;
 
-import com.solutis.votacao.domain.common.entity.BaseEntity;
+
 import com.solutis.votacao.domain.pauta.entity.Pauta;
 import com.solutis.votacao.domain.voto.entity.Voto;
 import lombok.*;
-import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -12,13 +11,15 @@ import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.LinkedHashSet;
 
-@Getter
-@Setter
+
+@Data
+@Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
+@EqualsAndHashCode
 @Table(name = "tb_sessao")
 public class Sessao  implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;

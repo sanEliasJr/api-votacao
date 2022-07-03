@@ -10,17 +10,17 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Data
 @Entity
-@Table(name = "TB_PAUTA")
+@Table(name = "tb_pauta")
 public class Pauta {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "nome", nullable = false)
+    @Column(name = "nome_pauta")
     private String nome;
 
-    @Column(name = "descricao", length = 255)
+    @Column(name = "descricao_pauta")
     private String descricao;
 
 

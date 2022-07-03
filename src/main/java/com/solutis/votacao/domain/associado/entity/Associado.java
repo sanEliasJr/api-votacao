@@ -1,12 +1,19 @@
 package com.solutis.votacao.domain.associado.entity;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+@EqualsAndHashCode
+@Entity
+@Table(name = "tb_associado")
 public class Associado implements Serializable {
 
     @Id

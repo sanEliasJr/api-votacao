@@ -6,6 +6,7 @@ import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 
 import javax.persistence.*;
@@ -16,6 +17,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Data
 @Entity
+@ToString(exclude = "sessao")
 @Table(name = "voto")
 public class Voto implements Serializable {
 
@@ -32,7 +34,7 @@ public class Voto implements Serializable {
     private Boolean OpcaoVoto;
 
     @ManyToOne
-    @JoinColumn(name = "id_sessao_votacao")
-    private Sessao sessaoVotacao;
+    @JoinColumn(name = "id_sessao")
+    private Sessao sessao;
 
 }
