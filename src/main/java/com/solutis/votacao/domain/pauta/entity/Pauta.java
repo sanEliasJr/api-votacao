@@ -3,33 +3,25 @@ package com.solutis.votacao.domain.pauta.entity;
 import com.solutis.votacao.domain.common.entity.BaseEntity;
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 
-
-@Setter
-@Getter
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
 @Entity
-@Table(name = "tb_pauta")
-public class Pauta extends BaseEntity {
+@Table(name = "TB_PAUTA")
+public class Pauta {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     @Column(name = "nome", nullable = false)
     private String nome;
+
     @Column(name = "descricao", length = 255)
     private String descricao;
 
-
-
-
-    @Builder
-    public Pauta(Long id, String nome, String descricao){
-        this.id = id;
-        this.nome = nome;
-        this.descricao = descricao;
-    }
 
 }

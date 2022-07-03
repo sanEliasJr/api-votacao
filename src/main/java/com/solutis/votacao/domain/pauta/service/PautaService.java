@@ -7,7 +7,6 @@ import com.solutis.votacao.execption.Error;
 import com.solutis.votacao.execption.RunAppExecption;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,37 +15,42 @@ import java.util.Optional;
 @Slf4j
 @AllArgsConstructor
 @Service
-public class PautaService extends BaseServiceImpl<Pauta, Long> {
-
+public class PautaService{
 
     private PautaRepository pautaRepository;
 
-    @Override
-    public List<Pauta> findALL() {
-        return null;
+    public Pauta savePauta(Pauta pauta){
+        pautaRepository.save(pauta);
+        return pauta;
     }
 
-    @Override
-    public void beforeSave(Pauta entity){
-        try {
-            Optional<Pauta> pautaSalvo = pautaRepository.findAll().stream()
-                    .filter(pauta -> entity.getNome().equals(pauta.getNome()))
-                    .findFirst();
-            if(pautaSalvo.isPresent()){
-                throw new RunAppExecption(Error.PAUTA_JA_CADASTRADA);
-            }
-        } catch (RuntimeException runAppException){
-            throw runAppException;
+    public List<Pauta> getPautas(){return pautaRepository.findAll();}
+
+    public Optional<Pauta> getPauta(Long id){return pautaRepository.findById(id);}
+
+
+    public void deleteById(Long id){
+        if(pautaRepository.existsById(id)){
+            pautaRepository.deleteById(id);
         }
     }
 
-    @Override
-    public void beforeUpdate(Pauta entity) {
 
-    }
 
-    @Override
-    public PautaRepository getRepository() {
-        return pautaRepository;
-    }
+
+
+//    @Override
+//    public void beforeSave(Pauta entity){
+//        try {
+//            Optional<Pauta> pautaSalvo = pautaRepository.findAll().stream()
+//                    .filter(pauta -> entity.getNome().equals(pauta.getNome()))
+//                    .findFirst();
+//            if(pautaSalvo.isPresent()){
+//                throw new RunAppExecption(Error.PAUTA_JA_CADASTRADA);
+//            }
+//        } catch (RuntimeException runAppException){
+//            throw runAppException;
+//        }
+//    }
+
 }

@@ -1,28 +1,38 @@
 package com.solutis.votacao.domain.sessao.entity;
 
 import com.solutis.votacao.domain.common.entity.BaseEntity;
+import com.solutis.votacao.domain.pauta.entity.Pauta;
+import com.solutis.votacao.domain.voto.entity.Voto;
 import lombok.*;
+import org.hibernate.annotations.Cascade;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.util.Collection;
+import java.util.LinkedHashSet;
 
 @Getter
 @Setter
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name = "tb_sessao")
-public class Sessao  extends BaseEntity {
+public class Sessao  implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long Id;
 
-    @Column(name = "", nullable = false)
-    private String nome;
+    @Column(name = "data_abertura")
+    private LocalDateTime dataAbertura;
 
-    @Builder
-    public Sessao(Long id, String nome){
-        this.id = id;
-        this.nome = nome;
-    }
+    @Column(name = "data_fechamento")
+    private LocalDateTime dataFechamento;
 
+    @OneToOne
+    @JoinColumn(name = "id_pauta")
+    private Pauta pauta;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "sessao", cascade = CascadeType.ALL)
+    private Collection<Voto> votos = new LinkedHashSet<Voto>();
 }

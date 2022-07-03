@@ -1,34 +1,19 @@
 package com.solutis.votacao.domain.pauta.dto;
 
-import com.fasterxml.jackson.annotation.JsonTypeName;
-import com.sun.istack.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.*;
+import javax.validation.constraints.NotBlank;
 
-
-@Getter
-@AllArgsConstructor
-@Builder
-@JsonTypeName
+@Data
+@EqualsAndHashCode
+@ToString
 public class PautaDTO {
-
-    private Long id;
-
+    @ApiModelProperty(value = "Descrição da pauta em votação")
+    @NotBlank(message = "Nome é obrigatório")
     private String nome;
 
+    @ApiModelProperty(value = "Descrição da pauta em votação")
     private String descricao;
 
-
-    @Getter
-    @AllArgsConstructor
-    @Builder
-    @JsonTypeName("pauta")
-    public static class save{
-
-        @NotNull
-        private String nome;
-
-    }
 
 }

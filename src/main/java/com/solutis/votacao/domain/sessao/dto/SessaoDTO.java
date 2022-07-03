@@ -23,5 +23,6 @@ public class SessaoDTO {
 
         @NotNull
         private String nome;
+
     }
 }
