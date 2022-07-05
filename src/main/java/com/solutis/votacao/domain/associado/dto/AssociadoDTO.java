@@ -16,6 +16,10 @@ public class AssociadoDTO {
     @NotNull(message = "CPF do Associado é obrigatório.")
     private Integer cpf;
 
+    @ApiModelProperty(value = "Nomo do Associado", example = "Elias")
+    @NotNull(message = "Nome do Associado é obrigatório")
+    private String nome;
+
     @ApiModelProperty(value = "Senha de Acesso Associado")
     @NotNull(message = "Senha de Associado Obrigatória.")
     private Integer senha;

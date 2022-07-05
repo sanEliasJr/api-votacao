@@ -21,10 +21,14 @@ import java.time.LocalDateTime;
 @Table(name = "voto")
 public class Voto implements Serializable {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long Id;
+
     @NotNull(message = "CPF é obrigatório.")
     @JoinColumn(name = "id_associado")
-    @Id
-    private Associado cpfAssociado;
+    @ManyToOne
+    private Associado associado; // Como associar um associado a um voto!
 
     @Column(name = "data")
     private LocalDateTime dataHoraVoto;

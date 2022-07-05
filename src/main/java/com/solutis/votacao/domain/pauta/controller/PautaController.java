@@ -29,8 +29,8 @@ public class PautaController {
     }
 
     @PostMapping
-    public ResponseEntity<PautaDTO> criarPauta(@RequestBody @Valid PautaDTO dto){
-        Pauta pauta = objectMapper.convertValue(dto, Pauta.class);
+    public ResponseEntity<PautaDTO> criarPauta(@RequestBody @Valid PautaDTO pautaDTO){
+        Pauta pauta = objectMapper.convertValue(pautaDTO, Pauta.class);
         pauta = pautaService.savePauta(pauta);
 
         return ResponseEntity.ok(objectMapper.convertValue(pauta, PautaDTO.class))

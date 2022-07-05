@@ -7,6 +7,7 @@ import com.solutis.votacao.execption.Error;
 import com.solutis.votacao.execption.RunAppExecption;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,7 +17,7 @@ import java.util.Optional;
 @AllArgsConstructor
 @Service
 public class PautaService{
-
+    @Autowired
     private PautaRepository pautaRepository;
 
     public Pauta savePauta(Pauta pauta){
