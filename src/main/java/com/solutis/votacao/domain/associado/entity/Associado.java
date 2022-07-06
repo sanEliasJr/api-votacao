@@ -27,9 +27,6 @@ public class Associado implements Serializable {
     @Column(name = "nome_associado")
     private String nome;
 
-    @Column(name = "login_associado") //analizar possivel utilização ( CPF ou login?)
-    private String login;
-
     @Column(name = "senha_associado")
     private Integer senha;
 

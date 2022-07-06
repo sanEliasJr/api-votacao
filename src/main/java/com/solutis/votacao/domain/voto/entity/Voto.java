@@ -25,10 +25,10 @@ public class Voto implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
 
-    @NotNull(message = "CPF é obrigatório.")
+    @NotNull(message = "Associado é obrigatório.")
     @JoinColumn(name = "id_associado")
     @ManyToOne
-    private Associado associado; // Como associar um associado a um voto!
+    private Associado Associado; // Como associar um associado a um voto!
 
     @Column(name = "data")
     private LocalDateTime dataHoraVoto;

@@ -1,6 +1,8 @@
 package com.solutis.votacao.domain.voto.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.solutis.votacao.domain.associado.entity.Associado;
+import com.solutis.votacao.domain.pauta.entity.Pauta;
 import com.solutis.votacao.domain.voto.dto.VotoDTO;
 import com.solutis.votacao.domain.voto.entity.Voto;
 import com.solutis.votacao.domain.voto.service.VotoService;
@@ -23,7 +25,7 @@ public class VotoController {
 
     @PostMapping("/{idPauta}/votar")
     public ResponseEntity votar(@PathVariable("idPauta") Long idPauta,  @RequestBody @Valid VotoDTO votoDTO){
-        votoService.votar(idPauta, objectMapper.convertValue(votoDTO, Voto.class));
+        votoService.votar(idPauta, votoDTO) ;
         return ResponseEntity.ok().build();
     }
 }

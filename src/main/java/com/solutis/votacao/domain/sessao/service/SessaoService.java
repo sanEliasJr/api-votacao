@@ -8,7 +8,6 @@ import com.solutis.votacao.execption.Error;
 import com.solutis.votacao.execption.RunAppExecption;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -33,21 +32,21 @@ public class SessaoService {
 
     public Optional<Pauta> pegarPauta(Long id) {return pautaRepository.findById(id);}
 
-    public void iniciarSessao(Long idPauta, Integer minuto) {
+    public Sessao iniciarSessao(Long idPauta, Integer minuto) {
         Pauta pauta = pegarPauta(idPauta).orElseThrow(() -> new RunAppExecption(Error.PAUTA_NAO_ENCONTRADA));
         if (Objects.requireNonNull(pegarSessao(pauta)).isPresent()){
             throw new RunAppExecption(Error.SESSAO_JA_EXISTE);
         }
-        criarSessao(pauta, minuto);
+        return criarSessao(pauta, minuto);
     }
 
-    private void criarSessao(Pauta pauta, Integer minuto) {
+    private Sessao criarSessao(Pauta pauta, Integer minuto) {
         Sessao sessao = new Sessao();
         sessao.setDataAbertura(LocalDateTime.now());
         sessao.setDataFechamento(dataFechamento(minuto));
         sessao.setPauta(pauta);
 
-        sessaoRepository.save(sessao);
+        return sessaoRepository.save(sessao);
     }
 
 

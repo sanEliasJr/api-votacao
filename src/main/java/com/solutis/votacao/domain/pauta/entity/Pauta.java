@@ -1,6 +1,5 @@
 package com.solutis.votacao.domain.pauta.entity;
 
-import com.solutis.votacao.domain.common.entity.BaseEntity;
 import lombok.*;
 
 import javax.persistence.*;
